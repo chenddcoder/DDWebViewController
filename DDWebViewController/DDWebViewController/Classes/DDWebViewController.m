@@ -87,6 +87,7 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self.progressLine endLoadingAnimation];
+    self.title=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     if ([webView canGoBack]) {
         [self addCloseBtn];
     }else{
