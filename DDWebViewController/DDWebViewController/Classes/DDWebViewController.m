@@ -29,7 +29,11 @@
     }
     NSString *newString = [self.url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSURLRequest * request=[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:newString]];
-    self.webView=[[UIWebView alloc] initWithFrame:self.view.frame];
+    if(self.navigationController){
+        self.webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height-64)];
+    }else{
+        self.webView=[[UIWebView alloc] initWithFrame:self.view.frame];
+    }
     [self.view addSubview: self.webView];
     self.webView.delegate = self;
     [self.webView loadRequest:request];
